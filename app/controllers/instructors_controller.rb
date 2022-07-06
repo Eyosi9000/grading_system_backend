@@ -4,13 +4,14 @@ class InstructorsController < ApplicationController
   # GET /instructors
   def index
     @instructors = Instructor.all
-
-    render json: @instructors
+    data = ActiveModelSerializers::SerializableResource.new(@instructors)
+    render json: { success: true, data: data }
   end
 
   # GET /instructors/1
   def show
-    render json: @instructor
+    data = ActiveModelSerializers::SerializableResource.new(@instructor)
+    render json: { success: true, data: data }
   end
 
   # POST /instructors

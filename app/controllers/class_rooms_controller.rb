@@ -4,13 +4,14 @@ class ClassRoomsController < ApplicationController
   # GET /class_rooms
   def index
     @class_rooms = ClassRoom.all
-
-    render json: @class_rooms
+    data = ActiveModelSerializers::SerializableResource.new(@class_rooms)
+    render json: { success: true, data: data }
   end
 
   # GET /class_rooms/1
   def show
-    render json: @class_room
+    data = ActiveModelSerializers::SerializableResource.new(@class_room)
+    render json: { success: true, data: data }
   end
 
   # POST /class_rooms
