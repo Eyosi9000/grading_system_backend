@@ -18,9 +18,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_06_184733) do
     t.bigint "student_id", null: false
     t.bigint "course_id", null: false
     t.bigint "instructor_id", null: false
-    t.string "class_room_no"
-    t.string "semester"
-    t.string "grade"
+    t.integer "class_room_no", null: false
+    t.string "semester", null: false
+    t.string "grade", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["course_id"], name: "index_class_rooms_on_course_id"
@@ -29,37 +29,37 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_06_184733) do
   end
 
   create_table "courses", force: :cascade do |t|
-    t.string "course_name"
-    t.string "course_description"
-    t.integer "credit_hour"
-    t.boolean "submission"
+    t.string "course_name", null: false
+    t.text "course_description"
+    t.integer "credit_hour", null: false
+    t.boolean "submission", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "instructors", force: :cascade do |t|
-    t.string "first_name"
-    t.string "middle_name"
-    t.string "last_name"
-    t.string "email"
+    t.string "first_name", null: false
+    t.string "middle_name", null: false
+    t.string "last_name", null: false
+    t.string "email", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "registrars", force: :cascade do |t|
-    t.string "first_name"
-    t.string "middle_name"
-    t.string "last_name"
-    t.string "email"
+    t.string "first_name", null: false
+    t.string "middle_name", null: false
+    t.string "last_name", null: false
+    t.string "email", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "students", force: :cascade do |t|
-    t.string "first_name"
-    t.string "middle_name"
-    t.string "last_name"
-    t.string "email"
+    t.string "first_name", null: false
+    t.string "middle_name", null: false
+    t.string "last_name", null: false
+    t.string "email", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

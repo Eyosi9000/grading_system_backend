@@ -4,13 +4,14 @@ class ClassRoomsController < ApplicationController
   # GET /class_rooms
   def index
     @class_rooms = ClassRoom.all
-
-    render json: @class_rooms
+    data = ActiveModelSerializers::SerializableResource.new(@class_rooms)
+    render json: { success: true, data: data }
   end
 
   # GET /class_rooms/1
   def show
-    render json: @class_room
+    data = ActiveModelSerializers::SerializableResource.new(@class_room)
+    render json: { success: true, data: data }
   end
 
   # POST /class_rooms
@@ -34,9 +35,9 @@ class ClassRoomsController < ApplicationController
   end
 
   # DELETE /class_rooms/1
-  def destroy
-    @class_room.destroy
-  end
+  # def destroy
+  #   @class_room.destroy
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.

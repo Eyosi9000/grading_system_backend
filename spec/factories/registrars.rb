@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :registrar do
-    first_name { "MyString" }
-    middle_name { "MyString" }
-    last_name { "MyString" }
-    email { "MyString" }
+    first_name { Faker::Name.name }
+    middle_name { Faker::Name.name }
+    last_name { Faker::Name.name }
+    email { Faker::Internet.email }
   end
 end
