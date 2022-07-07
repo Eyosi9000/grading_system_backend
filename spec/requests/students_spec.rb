@@ -112,12 +112,12 @@ RSpec.describe "/students", type: :request do
     end
   end
 
-  describe "DELETE /destroy" do
-    it "destroys the requested student" do
-      student = Student.create! valid_attributes
-      expect {
-        delete student_url(student), headers: valid_headers, as: :json
-      }.to change(Student, :count).by(-1)
-    end
-  end
+  # describe "DELETE /destroy" do
+  #   it "destroys the requested student" do
+  #     student = Student.create! valid_attributes
+  #     expect {
+  #       delete student_url(student), headers: valid_headers, as: :json
+  #     }.to change(Student, :count).by(-1)
+  #   end
+  # end
 end

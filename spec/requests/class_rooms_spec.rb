@@ -33,8 +33,8 @@ RSpec.describe "/class_rooms", type: :request do
   let(:invalid_attributes) do 
     {
     student: nil,
-    course: test_course[:id],
-    instructor: test_instructor[:id],
+    course: nil,
+    instructor: nil,
     class_room_no: 1 ,
     semester: Faker::Lorem.word,
     grade: Faker::Lorem.characters(number: 1) 
@@ -111,7 +111,7 @@ RSpec.describe "/class_rooms", type: :request do
       it "updates the requested class_room" do
         class_room = ClassRoom.create! valid_attributes
         patch class_room_url(class_room),
-              params: { class_room: new_attributes }, headers: valid_headers, as: :json
+              params: { class_room: new_attributes }, as: :json
         class_room.reload
         skip("Add assertions for updated state")
       end
@@ -119,7 +119,7 @@ RSpec.describe "/class_rooms", type: :request do
       it "renders a JSON response with the class_room" do
         class_room = ClassRoom.create! valid_attributes
         patch class_room_url(class_room),
-              params: { class_room: new_attributes }, headers: valid_headers, as: :json
+              params: { class_room: new_attributes }, as: :json
         expect(response).to have_http_status(:ok)
         expect(response.content_type).to match(a_string_including("application/json"))
       end
@@ -129,7 +129,7 @@ RSpec.describe "/class_rooms", type: :request do
       it "renders a JSON response with errors for the class_room" do
         class_room = ClassRoom.create! valid_attributes
         patch class_room_url(class_room),
-              params: { class_room: invalid_attributes }, headers: valid_headers, as: :json
+              params: { class_room: invalid_attributes }, as: :json
         expect(response).to have_http_status(:unprocessable_entity)
         expect(response.content_type).to match(a_string_including("application/json"))
       end

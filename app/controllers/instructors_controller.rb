@@ -35,9 +35,9 @@ class InstructorsController < ApplicationController
   end
 
   # DELETE /instructors/1
-  def destroy
-    @instructor.destroy
-  end
+  # def destroy
+  #   @instructor.destroy
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.

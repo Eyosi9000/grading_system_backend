@@ -112,12 +112,12 @@ RSpec.describe "/registrars", type: :request do
     end
   end
 
-  describe "DELETE /destroy" do
-    it "destroys the requested registrar" do
-      registrar = Registrar.create! valid_attributes
-      expect {
-        delete registrar_url(registrar), headers: valid_headers, as: :json
-      }.to change(Registrar, :count).by(-1)
-    end
-  end
+  # describe "DELETE /destroy" do
+  #   it "destroys the requested registrar" do
+  #     registrar = Registrar.create! valid_attributes
+  #     expect {
+  #       delete registrar_url(registrar), headers: valid_headers, as: :json
+  #     }.to change(Registrar, :count).by(-1)
+  #   end
+  # end
 end
