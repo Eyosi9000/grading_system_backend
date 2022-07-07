@@ -4,9 +4,9 @@ class CreateClassRooms < ActiveRecord::Migration[7.0]
       t.references :student, null: false, foreign_key: true
       t.references :course, null: false, foreign_key: true
       t.references :instructor, null: false, foreign_key: true
-      t.string :class_room_no
-      t.string :semester
-      t.string :grade
+      t.integer :class_room_no, null: false 
+      t.string :semester, null: false
+      t.string :grade, null: false
 
       t.timestamps
     end
