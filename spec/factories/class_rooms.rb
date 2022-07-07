@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :class_room do
-    student factory: :student
-    course factory: :course
+    association :student
+    association :course
     instructor factory: :instructor
     class_room_no { 1 }
     semester { Faker::Lorem.word }
