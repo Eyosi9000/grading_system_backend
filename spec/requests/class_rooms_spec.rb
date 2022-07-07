@@ -69,10 +69,10 @@ RSpec.describe "/class_rooms", type: :request do
   describe "POST /create" do
     context "with valid parameters" do
       it "creates a new ClassRoom" do
-        expect {
+        expect do
           post class_rooms_url,
                params: { class_room: valid_attributes }, as: :json
-        }.to change(ClassRoom, :count).by(1)
+        end.to change(ClassRoom, :count).by(1)
       end
 
       it "renders a JSON response with the new class_room" do
@@ -85,10 +85,10 @@ RSpec.describe "/class_rooms", type: :request do
 
     context "with invalid parameters" do
       it "does not create a new ClassRoom" do
-        expect {
+        expect do
           post class_rooms_url,
                params: { class_room: invalid_attributes }, as: :json
-        }.to change(ClassRoom, :count).by(0)
+        end.to change(ClassRoom, :count).by(0)
       end
 
       it "renders a JSON response with errors for the new class_room" do
