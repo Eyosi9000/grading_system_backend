@@ -88,7 +88,7 @@ RSpec.describe "/courses", type: :request do
         patch course_url(course),
               params: { course: new_attributes }, as: :json
         course.reload
-        skip("Add assertions for updated state")
+        expect(course.course_name).to eq new_attributes[:course_name]
       end
 
       it "renders a JSON response with the course" do

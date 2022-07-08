@@ -88,7 +88,7 @@ RSpec.describe "/instructors", type: :request do
         patch instructor_url(instructor),
               params: { instructor: new_attributes }, headers: valid_headers, as: :json
         instructor.reload
-        skip("Add assertions for updated state")
+        expect(instructor.first_name).to eq new_attributes[:first_name]
       end
 
       it "renders a JSON response with the instructor" do
