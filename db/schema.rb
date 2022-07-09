@@ -10,22 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_06_184733) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_09_164432) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "class_rooms", force: :cascade do |t|
-    t.bigint "student_id", null: false
     t.bigint "course_id", null: false
     t.bigint "instructor_id", null: false
     t.integer "class_room_no", null: false
     t.string "semester", null: false
-    t.string "grade", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "year"
     t.index ["course_id"], name: "index_class_rooms_on_course_id"
     t.index ["instructor_id"], name: "index_class_rooms_on_instructor_id"
-    t.index ["student_id"], name: "index_class_rooms_on_student_id"
   end
 
   create_table "courses", force: :cascade do |t|
@@ -62,9 +60,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_06_184733) do
     t.string "email", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "class_room_id", null: false
+    t.index ["class_room_id"], name: "index_students_on_class_room_id"
   end
 
   add_foreign_key "class_rooms", "courses"
   add_foreign_key "class_rooms", "instructors"
-  add_foreign_key "class_rooms", "students"
+  add_foreign_key "students", "class_rooms"
 end

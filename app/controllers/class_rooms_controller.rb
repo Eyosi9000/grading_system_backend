@@ -47,6 +47,6 @@ class ClassRoomsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def class_room_params
-      params.require(:class_room).permit(:student_id, :course_id, :instructor_id, :class_room_no, :semester, :grade)
+      params.require(:class_room).permit(:course_id, :instructor_id, :class_room_no, :semester, :year)
     end
 end
