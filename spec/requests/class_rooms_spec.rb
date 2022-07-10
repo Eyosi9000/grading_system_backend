@@ -21,9 +21,9 @@ RSpec.describe "/class_rooms", type: :request do
     })
 
     {
-    student: test_student[:id],
-    course: test_course[:id],
-    instructor: test_instructor[:id],
+    student_id: test_student[:id],
+    course_id: test_course[:id],
+    instructor_id: test_instructor[:id],
     class_room_no: 1 ,
     semester: Faker::Lorem.word,
     grade: Faker::Lorem.characters(number: 1) 
@@ -32,9 +32,9 @@ RSpec.describe "/class_rooms", type: :request do
 
   let(:invalid_attributes) do 
     {
-    student: nil,
-    course: nil,
-    instructor: nil,
+    student_id: nil,
+    course_id: nil,
+    instructor_id: nil,
     class_room_no: 1 ,
     semester: Faker::Lorem.word,
     grade: Faker::Lorem.characters(number: 1) 
@@ -69,10 +69,10 @@ RSpec.describe "/class_rooms", type: :request do
   describe "POST /create" do
     context "with valid parameters" do
       it "creates a new ClassRoom" do
-        expect {
+        expect do
           post class_rooms_url,
                params: { class_room: valid_attributes }, as: :json
-        }.to change(ClassRoom, :count).by(1)
+        end.to change(ClassRoom, :count).by(1)
       end
 
       it "renders a JSON response with the new class_room" do
@@ -85,10 +85,10 @@ RSpec.describe "/class_rooms", type: :request do
 
     context "with invalid parameters" do
       it "does not create a new ClassRoom" do
-        expect {
+        expect do
           post class_rooms_url,
                params: { class_room: invalid_attributes }, as: :json
-        }.to change(ClassRoom, :count).by(0)
+        end.to change(ClassRoom, :count).by(0)
       end
 
       it "renders a JSON response with errors for the new class_room" do
@@ -113,7 +113,7 @@ RSpec.describe "/class_rooms", type: :request do
         patch class_room_url(class_room),
               params: { class_room: new_attributes }, as: :json
         class_room.reload
-        skip("Add assertions for updated state")
+        expect(class_room.semester).to eq new_attributes[:semester]
       end
 
       it "renders a JSON response with the class_room" do

@@ -89,7 +89,7 @@ RSpec.describe "/students", type: :request do
         patch student_url(student),
               params: { student: new_attributes }, headers: valid_headers, as: :json
         student.reload
-        skip("Add assertions for updated state")
+        expect(student.first_name).to eq new_attributes[:first_name]
       end
 
       it "renders a JSON response with the student" do

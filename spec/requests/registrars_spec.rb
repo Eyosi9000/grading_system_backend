@@ -89,7 +89,7 @@ RSpec.describe "/registrars", type: :request do
         patch registrar_url(registrar),
               params: { registrar: new_attributes }, headers: valid_headers, as: :json
         registrar.reload
-        skip("Add assertions for updated state")
+        expect(registrar.first_name).to eq new_attributes[:first_name]
       end
 
       it "renders a JSON response with the registrar" do
